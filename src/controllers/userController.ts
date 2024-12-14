@@ -67,3 +67,37 @@ export const deleteUser = async (req: Request, res: Response) => {
         return res.status(500).json(err);
     }
 }
+
+export const addFriend = async (req: Request, res: Response) => {
+    try {
+        const friend = await User.findOneAndUpdate(
+            {_id: req.params.UserId},
+            { $addToSet: { friends: req.params.friendId } },
+            { new: true }
+        );
+        if (!friend) {
+            return res.status(404).json({ message: 'No user found!' });
+        }
+        return res.json(friend);
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json(err);
+    }
+}
+
+export const deleteFriend = async (req: Request, res: Response) => {
+    try {
+        const friend = await User.findOneAndUpdate(
+            {_id: req.params.UserId},
+            { $pull: { friends: req.params.friendId } },
+            { new: true }
+        );
+        if (!friend) {
+            return res.status(404).json({ message: 'No user found!' });
+        }
+        return res.json(friend);
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json(err);
+    }
+}
