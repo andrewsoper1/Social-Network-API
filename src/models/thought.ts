@@ -65,7 +65,8 @@ const ThoughtSchema = new Schema<IThought>({
         virtuals: true,
         getters: true
     },
-    id: false
+    id: false,
+    versionKey: false
 });
 
 ThoughtSchema.virtual('reactionCount').get(function() {

@@ -48,7 +48,8 @@ const ThoughtSchema = new Schema({
         virtuals: true,
         getters: true
     },
-    id: false
+    id: false,
+    versionKey: false
 });
 ThoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
