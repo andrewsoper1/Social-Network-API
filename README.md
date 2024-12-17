@@ -25,6 +25,7 @@ WHEN I test API POST and DELETE routes in Insomnia
 THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
 ```
 Since this Social Network API is server side only, you can view the routes being tested in insomnia in this video:
+
 [Social Network API.webm](https://github.com/user-attachments/assets/d347f49d-c434-4cf4-8234-794103617280)
 
 ## License
