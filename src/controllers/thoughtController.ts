@@ -4,10 +4,10 @@ import { Request, Response } from 'express';
 export const getAllThoughts = async (_req: Request, res: Response) => {
     try {
         const thoughts = await Thought.find();
-        res.json(thoughts)
+        return res.json(thoughts)
     } catch (err) {
         console.log(err);
-        res.status(500).json(err);
+        return res.status(500).json(err);
     }
 }
 
@@ -52,10 +52,10 @@ export const updateThought = async (req: Request, res: Response) => {
         if (!thought) {
             res.status(404).json({ message: 'No thought found!' });
         }
-         res.json(thought);
+        return res.json(thought);
     } catch (err) {
         console.log(err);
-         res.status(500).json(err);
+        return res.status(500).json(err);
     }
 }
 
@@ -90,10 +90,10 @@ export const addReaction = async (req: Request, res: Response) => {
         if (!reaction) {
             res.status(404).json({ message: 'No thought found!' });
         }
-        res.json(reaction);
+        return res.json(reaction);
     } catch (err) {
         console.log(err);
-        res.status(500).json(err);
+        return res.status(500).json(err);
     }
 }
 
@@ -107,9 +107,9 @@ export const deleteReaction = async (req: Request, res: Response) => {
         if (!reaction) {
             res.status(404).json({ message: 'No thought found!' });
         }
-        res.json(reaction);
+       return res.json({message: 'Reaction has been deleted!'});
     } catch (err) {
         console.log(err);
-        res.status(500).json(err);
+        return res.status(500).json(err);
     }
 }

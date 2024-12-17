@@ -4,6 +4,6 @@ import { getAllThoughts, getSingleThought, createThought, updateThought, deleteT
 
 router.route('/').get(getAllThoughts).post(createThought);
 router.route('/:thoughtId').get(getSingleThought).put(updateThought).delete(deleteThought);
-router.route('/:thoughtId/reactions').post(addReaction).delete(deleteReaction);
-
+router.route('/:thoughtId/reactions').post(addReaction)
+router.route('/:thoughtId/reactions/:reactionId').delete(deleteReaction);
 export default router;

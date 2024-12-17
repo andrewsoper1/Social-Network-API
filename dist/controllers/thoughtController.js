@@ -2,11 +2,11 @@ import { User, Thought } from '../models/index.js';
 export const getAllThoughts = async (_req, res) => {
     try {
         const thoughts = await Thought.find();
-        res.json(thoughts);
+        return res.json(thoughts);
     }
     catch (err) {
         console.log(err);
-        res.status(500).json(err);
+        return res.status(500).json(err);
     }
 };
 export const getSingleThought = async (req, res) => {
@@ -42,11 +42,11 @@ export const updateThought = async (req, res) => {
         if (!thought) {
             res.status(404).json({ message: 'No thought found!' });
         }
-        res.json(thought);
+        return res.json(thought);
     }
     catch (err) {
         console.log(err);
-        res.status(500).json(err);
+        return res.status(500).json(err);
     }
 };
 export const deleteThought = async (req, res) => {
@@ -72,11 +72,11 @@ export const addReaction = async (req, res) => {
         if (!reaction) {
             res.status(404).json({ message: 'No thought found!' });
         }
-        res.json(reaction);
+        return res.json(reaction);
     }
     catch (err) {
         console.log(err);
-        res.status(500).json(err);
+        return res.status(500).json(err);
     }
 };
 export const deleteReaction = async (req, res) => {
@@ -85,10 +85,10 @@ export const deleteReaction = async (req, res) => {
         if (!reaction) {
             res.status(404).json({ message: 'No thought found!' });
         }
-        res.json(reaction);
+        return res.json({ message: 'Reaction has been deleted!' });
     }
     catch (err) {
         console.log(err);
-        res.status(500).json(err);
+        return res.status(500).json(err);
     }
 };
